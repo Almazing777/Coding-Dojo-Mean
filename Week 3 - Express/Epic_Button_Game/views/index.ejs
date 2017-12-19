@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>epic button game</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    
+    <script type ="text/javascript">
+    $(document).ready(function(){
+      var socket = io.connect();
+
+      socket.on("update_number", function(data){
+        $("h2").text('This button has been pushed'+ data.number +'times!');
+      });
+
+      $("#epic").click(function(){
+        socket.emit("buttonClicked");
+      });
+
+      $("#reset").click(function(){
+        socket.emit("reset");
+      });
+    });
+
+    </script>
+</head>
+<body class = "container">
+  <h1>Epic Button Game</h1>
+  <h2> This button has been pushed <%= number %> times </h2>
+
+  <div id ="buttonPush"> 
+    <p>push button to update the count</p>
+    <button class = "btn btn-primary" id="epic"> Press Here </button>
+  </div>
+
+  <button class="btn btn-warning pull-right" id="reset"> Reset </button>
+
+</body>
+</html>

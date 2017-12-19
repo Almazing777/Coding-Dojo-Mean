@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey Form</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+
+    var person = prompt("Please enter your name to chat");
+         $(document).ready(function (){
+            var socket  = io.connect();
+            socket.emit("user", {name: person});
+            $('#send').click(function (){
+              socket.emit("new", {message: $("#new_message").val()});
+            });
+            socket.on('message_board', function (data){
+              let chats = data.chats;
+              for (let i in chats){
+                message = chats[i];
+                for (let name in message){
+                  $("#msg_brd").append("<p>"+name+": "+message[name]+"</p>")
+                }
+              }
+            });
+            socket.on('update_message_board', function (data){
+              $("#msg_brd").append("<p>"+data.name+": "+data.message+"</p>")
+            });
+        })
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <h3>Board: </h3>
+      <div id="msg_brd"></div>
+      <input type="text" id="new_message" placeholder="write here..">
+      <button id="send">POST</button>
+    </div>
+  </body>
+</html>

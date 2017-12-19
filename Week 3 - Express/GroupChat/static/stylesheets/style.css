@@ -1,0 +1,25 @@
+h3{
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#message_board{
+  width: 95%;
+  border: 1px solid lightgrey;
+  padding: 10px;
+
+}
+#wrapper{
+  width: 60%;
+  overflow: hidden;
+  clear: both;
+}
+input{
+  margin-top: 20px;
+  width: 98%;
+}
+button{
+  margin-top: 10px;
+  display: block;
+
+}
