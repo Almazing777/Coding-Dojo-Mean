@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hello express</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type ="text/javascript">
+         $(document). ready(function (){
+             var socket  = io.connect();
+
+             $("#survey_form").submit(function(e){
+              e.preventDefault();
+              socket.emit("posting_form", {
+                name: $("#name").val(),
+                location: $("#location").val(),
+                language: $("#language").val(),
+                comment: $("#comment").val()
+              });
+             });
+
+             socket.on("updated_message", function (data){
+              $("#message").html("You emitted the following information to the server:" + JSON.stringify(data.response));
+             });
+
+             socket.on("random_number", function(data){
+              $("#number").html("Your lucky number emitted by the server is:" + JSON.stringify(data.response));
+             })
+          });
+  </script>
+</head>
+<body>
+  <div id ="message"></div>
+  <div id = "number"></div>
+<fieldset>
+  <form action ="" id="survey_form">
+    Name: <input type="text" id="name" name="name"><br>
+    Dojo Location: 
+    <select id="location" name='location'>
+      <option value = "Mountain View">Mountain View</option>
+      <option value = "Washington D.C."> Washington D.C. </option>
+      <option value = "Seattle, WA"> Seattle </option>
+      <option value = "Sillicon Valley"> Sillicon Valley </option>
+    </select><br>
+    Favorite Language: 
+    <select id='language' name='language'>
+      <option value = "Python">Python</option>
+      <option value = "JS"> JS </option>
+      <option value = "Java"> Java </option>
+      <option value = "Ruby"> Ruby </option>
+    </select><br>
+    Comments (Optional): 
+      <textarea id="comment" name = "comment"> Enter comments here.... </textarea>
+      <br>
+      <input type="submit" name= "submit" value="Submit">
+  </form>
+</fieldset>
+  
+</body>
+</html>
