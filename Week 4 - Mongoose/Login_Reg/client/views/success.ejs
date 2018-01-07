@@ -1,0 +1,10 @@
+<% extend('register') %>
+
+    <div class="container">
+        <h2>Logged in as
+            <%= user.name %>!
+        </h2>
+        <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>

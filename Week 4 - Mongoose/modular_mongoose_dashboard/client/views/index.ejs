@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index page</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+<body>
+<fieldset>
+	<nav>
+		<a href="/mongoose/new"> Create New Fish </a>
+
+	</nav>
+ 	<h1> Fish main page </h1>
+ 	<% for (const fish of fishes) {%>
+ 		<p> Id: <a href="/mongoose/<%= fish._id %>"><%= fish.id %></a></p>
+ 			<a href="/mongoose/<%= fish._id %>/edit"> Edit Fish </a>
+ 		<p> Name: <%= fish.name %> at <%= fish.createdAt %></p>
+ 		<p> Color: <%= fish.color %> </p>
+ 		<p> Age: <%= fish.age %> </p>
+
+ 		<form action="/mongoose/<%= fish._id %>/delete/" method="POST">
+ 			<input type="submit" value="Delete">
+ 		</form>
+ 	<% } %>
+
+</fieldset>
+
+</body>
+</html>

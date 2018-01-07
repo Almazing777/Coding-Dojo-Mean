@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Fish Information</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+<body>
+<fieldset>
+	<h1> Edit # <%= fish.name %> ! </h1>
+	<form action ="/mongoose/<%= fish.id %>" method="POST">
+		Name: <input type="text" name="name" value="<%= fish.name %>">
+		Color: <input type="text" name="color" value="<%= fish.color %>">
+		Age: <input type="text" name="age" value="<%= fish.age %>">
+		<input type="submit" name="Edit Fish">
+	</form>
+	<a href="/"> Take me to the main page</a>
+</fieldset>
+</body>
+</html>

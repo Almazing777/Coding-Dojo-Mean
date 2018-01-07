@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quotes</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+<body>
+<fieldset>
+ <div>
+ 	<nav>
+ 		<a href="/"> Home </a>
+  	</nav>
+
+  	<h1> Check out the quotes </h1>
+  	<% for (const quote of quotes) {%>
+  		<h3> Author: <%= quote.name %> at <%= quote.createdAt %></h3>
+  		<p> Quote: <%= quote.quote %></p>
+  	<% } %>
+  <div>
+</fieldset>
+</body>
+</html>
