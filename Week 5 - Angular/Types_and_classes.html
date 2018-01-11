@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Types and Classes</title>
+</head>
+<script type="text/javascript">
+	const myNum: number = 5;
+	const myString: string = "Hello Universe";
+	const myArr: number[1,2,3,4];
+	const myObj = { [key: string]: (string | number )} = { name: "Bill"};
+
+	const anythingVariable: any = "Hey";
+	anythingVariable = 25;
+
+	const arrayOne: boolean[true, false, true, true];
+	const arrayTwo: any[1, "abc", true, 2];
+
+	const myObj = {
+		x: 5, y: 10
+	}
+
+	class MyNode {
+		val: number;
+
+		constructor(valueP: number){
+			this.val = valueP;
+		}
+
+		domeSomething(){
+			console.log(val);
+		}
+		return MyNode;
+	};
+
+	let myNodeInstance =  newMyNode(1);
+	console.log(myNodeInstance.val);
+
+	function myFunction(val: string): void{
+		console.log(val);
+		return;
+	}
+
+	function sendingErrors(message: string): never{
+		throw new Error(message);
+	}
+
+	// myNum = 5;
+	// myString = "Hello Universe";
+	// myArr = [1,2,3,4];
+	// myObj = { name:'Bill'};
+	// anythingVariable = "Hey";
+	// anythingVariable = 25; 
+	// arrayOne = [true, false, true, true]; 
+	// // arrayTwo = [1, 'abc', true, 2];
+	// // myObj = { x: 5, y: 10 };
+	// // object constructor
+	// MyNode = (function () {
+	//     function MyNode(val) {
+	//         this.val = 0;
+	//         this.val = val;
+	//     }
+	//     MyNode.prototype.doSomething = function () {
+	//         this._priv = 10;
+	//     };
+	//     return MyNode;
+	// }());
+	// myNodeInstance = new MyNode(1);
+	// console.log(myNodeInstance.val);
+
+	// function myFunction() {
+	//     console.log("Hello World");
+	//     return;
+	// }
+	// function sendingErrors() {
+	// 	throw new Error('Error message');
+	// }
+</script>
+<body>
+
+</body>
+</html>
