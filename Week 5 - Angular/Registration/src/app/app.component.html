@@ -1,0 +1,205 @@
+<fieldset>
+
+<legend> Register Here </legend>
+
+<span *ngIf="form.valid">
+  <div align="center"> You are succesfully registered!</div>
+</span>
+
+<form (submit)="form.valid && onSubmit($event, form)" #form="ngForm">
+  <label for="">Email:</label>
+  <input
+  type="text"
+  name="email"
+  required
+  minlength = "3"
+  maxlength = "25"
+  [(ngModel)] = "user.email"
+  #email="ngModel"
+  />
+  <div *ngIf = "(email.touched) && email.errors">
+    <div *ngIf="email.errors.required">
+      You must enter valid email.
+    </div>
+    <div *ngIf="email.errors.minlength">
+      Email must be atleast {{ email.errors.minlength.requiredLength}} characters.
+    </div>
+  </div>
+  <br>
+
+  <label for="">First Name: </label>
+  <input type="text" name="firstName"
+  required
+  minlength="3"
+  maxlength="10"
+  [(ngModel)] = "user.firstName"
+  #firstName="ngModel"
+  />
+
+    <div *ngIf = "(firstName.touched) && firstName.errors">
+      <div *ngIf="firstName.errors.required">
+        You must enter valid firstName.
+      </div>
+      <div *ngIf="firstName.errors.minlength">
+        firstName must be atleast {{ firstName.errors.minlength.requiredLength}} characters.
+      </div>
+    </div>
+
+  <br>
+
+  <label for="">Last Name: </label>
+  <input
+  type="text"
+  name="lastName"
+  required
+  minlength="3"
+  maxlength="10"
+  [(ngModel)] = "user.lastName"
+  #lastName="ngModel"
+  />
+
+    <div *ngIf = "(lastName.touched) && lastName.errors">
+      <div *ngIf="lastName.errors.required">
+        You must enter valid lastName.
+      </div>
+      <div *ngIf="lastName.errors.minlength">
+        lastName must be atleast {{ lastName.errors.minlength.requiredLength}} characters.
+      </div>
+    </div>
+
+  <br>
+
+  <label for="">Password: </label>
+  <input
+  type="text"
+  name="password"
+  required
+  minlength="10"
+  maxlength="20"
+  pattern="^([a-zA-Z0-9@*#]{8,15})$"
+  [(ngModel)]="user.password"
+  #password='ngModel'
+  />
+
+  <div *ngIf = "(password.touched) && password.errors">
+      <div *ngIf="password.errors.required">
+        You must enter valid password.
+      </div>
+      <div *ngIf="password.errors.minlength">
+        password must be atleast {{ password.errors.minlength.requiredLength}} characters.
+      </div>
+    </div>
+
+  <br>
+
+  <label for="">Street Address: </label>
+  <input
+  type="text"
+  name="address"
+  required
+  minlength="3"
+  maxlength="255"
+  [(ngModel)]="user.address"
+  #address='ngModel'
+  />
+  <div *ngIf = "(address.touched) && address.errors">
+      <div *ngIf="address.errors.required">
+        You must enter valid address.
+      </div>
+      <div *ngIf="address.errors.minlength">
+        address must be atleast {{ address.errors.minlength.requiredLength}} characters.
+      </div>
+    </div>
+
+  <br>
+
+  <label for="">Unit/Apt: </label>
+  <input
+  type="text"
+  name="apt"
+  required
+  minlength="1"
+  maxlength="255"
+  [(ngModel)]="user.apt"
+  #apt='ngModel'
+  />
+  <div *ngIf = "(apt.touched) && apt.errors">
+      <div *ngIf="apt.errors.required">
+        You must enter valid apt.
+      </div>
+      <div *ngIf="apt.errors.minlength">
+        apt must be atleast {{ apt.errors.minlength.requiredLength}} characters.
+      </div>
+    </div>
+
+  <br>
+
+  <label for="">City: </label>
+  <input
+  type="text"
+  name="city"
+  required
+  minlength="1"
+  maxlength="255"
+  [(ngModel)]="user.city"
+  #city='ngModel'
+  />
+  <div *ngIf = "(city.touched) && city.errors">
+      <div *ngIf="city.errors.required">
+        You must enter valid city.
+      </div>
+      <div *ngIf="city.errors.minlength">
+        city must be atleast {{ city.errors.minlength.requiredLength}} characters.
+      </div>
+    </div>
+
+  <br>
+
+  <label for="">State: </label>
+  <input
+  type="text"
+  name="state"
+  required
+  minlength="1"
+  maxlength="255"
+  [(ngModel)]="user.state"
+  #state='ngModel'
+  />
+  <div *ngIf = "(state.touched) && state.errors">
+      <div *ngIf="state.errors.required">
+        You must enter valid state.
+      </div>
+      <div *ngIf="state.errors.minlength">
+        state must be atleast {{ state.errors.minlength.requiredLength}} characters.
+      </div>
+    </div>
+
+  <br>
+
+  <label for="">I'm Feeling Lucky: </label>
+  <input
+  type="radio"
+  name="radio"
+  value="Yes"
+  required
+  [(ngModel)]="user.radio1"
+  #radio1='ngModel'
+  /> Yes
+  <input
+  type="radio"
+  name="radio"
+  value="No"
+  required
+  [(ngModel)]="user.radio2"
+  #radio2='ngModel'
+  /> No
+  <div *ngIf ="!radio1.valid"> select one </div>
+
+  <br>
+
+  <button *ngIf="form.valid">Submit</button>
+
+</form>
+
+
+</fieldset>
