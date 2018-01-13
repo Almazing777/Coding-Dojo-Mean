@@ -1,0 +1,3 @@
+<div class ="switch" *ngFor = "let switch of switches; let idx = index">
+<button *ngIf = "switch" [ngClass] ="{'on': switch}" (click)="flipSwitch(idx)"> ON </button>
+<button *ngIf="!switch" [ngClass]="{'on':switch}" (click)="flipSwitch(idx)"> OFF</button>
