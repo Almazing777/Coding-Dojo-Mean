@@ -1,0 +1,7 @@
+<fieldset>
+  <legend>{{name}}</legend>
+  <p>Power Level: {{current_power}}</p>
+  <h3 *ngIf="current_power > 9000 && current_power <= 20000">Over 9000!</h3>
+  <h3 *ngIf="current_power > 20000 && current_power !== 50000">Superlative!</h3>
+  <h3 *ngIf="current_power === 50000">The One</h3>
+</fieldset>
